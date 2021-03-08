@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "812935862979",
+    "project_id": "patapet-e7c16",
+    "storage_bucket": "patapet-e7c16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812935862979:android:b618d5d69bd2ae5743a076",
+        "android_client_info": {
+          "package_name": "tanmayd.pat_a_pet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812935862979-jknhl05bqotj0kld6uv72rvehedcrs7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPOxACBtzEYHy6-Ukl839BxI56Y03kULI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812935862979-jknhl05bqotj0kld6uv72rvehedcrs7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
