@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pat_a_pet/ContactUs.dart';
 
 class home extends StatelessWidget {
   @override
@@ -90,7 +91,12 @@ class home extends StatelessWidget {
                     ],
                   ),
                   onTap: () {
-                    print('Pressed');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => contactUs(),
+                      ),
+                    );
                   },
                 ),
                 // Divider(
