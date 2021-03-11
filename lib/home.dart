@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pat_a_pet/ContactUs.dart';
+import 'package:pat_a_pet/adopt.dart';
 
 class home extends StatelessWidget {
   @override
@@ -63,7 +64,12 @@ class home extends StatelessWidget {
                     ],
                   ),
                   onTap: () {
-                    print('Pressed');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => adopt(),
+                      ),
+                    );
                   },
                 ),
                 // Divider(
@@ -117,18 +123,48 @@ class home extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: Center(
-              child: FadeAnimatedTextKit(
-            repeatForever: true,
-            text: [
-              "Adopt\n\t\t\t\t Don't\n Shop",
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: FadeAnimatedTextKit(
+                  repeatForever: true,
+                  duration: Duration(seconds: 2),
+                  text: [
+                    "Adopt,\n\t\t\t\t Don't\n Shop",
+                  ],
+                  textStyle: TextStyle(
+                      fontSize: 50.0,
+                      color: Colors.white70,
+                      letterSpacing: 2.0,
+                      fontFamily: 'Bowlby'),
+                ),
+              ),
+              SizedBox(height: 50.0),
+              Material(
+                color: Colors.black12,
+                borderRadius: BorderRadius.circular(20.0),
+                child: MaterialButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => adopt(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Adopt now',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white70,
+                        letterSpacing: 1.5,
+                        fontFamily: 'SourceSansPro'),
+                  ),
+                ),
+              ),
             ],
-            textStyle: TextStyle(
-                fontSize: 50.0,
-                color: Colors.white70,
-                letterSpacing: 2.0,
-                fontFamily: 'Bowlby'),
-          )),
+          ),
         ),
       ),
     );
