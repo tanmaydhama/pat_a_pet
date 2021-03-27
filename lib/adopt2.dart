@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pat_a_pet/status.dart';
 import 'constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'petData.dart';
 import 'petCard.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:provider/provider.dart';
 
 class adopt2 extends StatefulWidget {
   final int i;
@@ -56,8 +58,19 @@ class _adopt2State extends State<adopt2> {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: Center(
-                child: Text('Loading...'),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  petCard(
+                    name:
+                        'Name: ${pet[widget.i].name}\n Breed: ${pet[widget.i].breed}\n Age: ${pet[widget.i].age}\n Sex: ${pet[widget.i].sex}\n Status: ${pet[widget.i].status}',
+                    imageUrl: url[widget.i],
+                  ),
+                  Text(
+                    '*This is not the updated information. Connect to internet and restart your device if this screen continues to show up.',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ],
               ),
             );
           } else {
@@ -75,7 +88,7 @@ class _adopt2State extends State<adopt2> {
                     tag: widget.i.toString(),
                     child: petCard(
                       name:
-                          'Name: ${snapshot.data.name}\n Breed: ${snapshot.data.breed}\n Age: ${snapshot.data.age}\n Sex: ${snapshot.data.sex}\n Status: ${snapshot.data.status}',
+                          'Name: ${snapshot.data.name}\n Breed: ${snapshot.data.breed}\n Age: ${snapshot.data.age}\n Sex: ${snapshot.data.sex}\n Status: ${Provider.of<Status>(context).status[widget.i]}',
                       imageUrl: url[widget.i],
                     ),
                   ),
@@ -88,8 +101,11 @@ class _adopt2State extends State<adopt2> {
                     child: MaterialButton(
                       minWidth: 150.0,
                       onPressed: () {
-                        if (snapshot.data.status == 'Available') {
+                        if (Provider.of<Status>(context).status[widget.i] ==
+                            'Available') {
                           setState(() {
+                            Provider.of<Status>(context)
+                                .updateStatus('Adopted', widget.i);
                             _firestore
                                 .collection('pets')
                                 .doc(widget.i.toString())
@@ -131,6 +147,8 @@ class _adopt2State extends State<adopt2> {
                   FlatButton(
                     onPressed: () {
                       setState(() {
+                        Provider.of<Status>(context)
+                            .updateStatus('Available', widget.i);
                         _firestore
                             .collection('pets')
                             .doc(widget.i.toString())
